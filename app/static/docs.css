@@ -1,0 +1,655 @@
+/* ==========================================================================
+   AEREO GEOMEASURE — SWAGGER UI BRANDED THEME
+   Butter-inspired editorial aesthetic: warm ivory, forest green, Newsreader
+   serif headings, DM Sans interface, hairline borders, refined interactions.
+   ========================================================================== */
+
+:root {
+  --aereo-paper-light: #faf9f3;
+  --aereo-paper: #f4f3ea;
+  --aereo-card: #ffffff;
+  --aereo-ink-deep: #17251f;
+  --aereo-ink: #22322a;
+  --aereo-ink-soft: #667269;
+  --aereo-ink-muted: #88948b;
+
+  --aereo-forest: #285f4d;
+  --aereo-forest-light: #3f8067;
+  --aereo-forest-deep: #1c4537;
+  --aereo-forest-tint: #edf4f0;
+
+  --aereo-amber: #bd784b;
+  --aereo-amber-tint: #fbf2ec;
+  --aereo-blue: #3c7fc8;
+  --aereo-blue-tint: #eef5fc;
+  --aereo-crimson: #a63f35;
+  --aereo-crimson-tint: #fdf0ee;
+
+  --aereo-rule: #d9ded3;
+  --aereo-rule-light: #e7ecdf;
+  --aereo-shadow: 0 3px 16px rgba(27, 43, 34, 0.04);
+  --aereo-shadow-hover: 0 6px 24px rgba(27, 43, 34, 0.08);
+
+  --aereo-serif: "Newsreader", "Newsreader Variable", Georgia, serif;
+  --aereo-sans: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --aereo-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--aereo-paper-light) !important;
+  color: var(--aereo-ink-deep) !important;
+  font-family: var(--aereo-sans) !important;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ==========================================================================
+   BRANDED TOP NAVIGATION HEADER
+   ========================================================================== */
+
+.aereo-docs-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: rgba(250, 249, 243, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--aereo-rule);
+  padding: 0 clamp(16px, 4vw, 40px);
+}
+
+.aereo-docs-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 1240px;
+  min-height: 72px;
+  margin: 0 auto;
+}
+
+.aereo-docs-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.aereo-brand-mark {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border: 1px solid #c9d5c9;
+  border-radius: 50%;
+  color: var(--aereo-forest);
+  background-color: #edf2eb;
+  transition: transform 150ms ease;
+}
+
+.aereo-docs-brand:hover .aereo-brand-mark {
+  transform: scale(1.05);
+}
+
+.aereo-brand-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.aereo-brand-title-line {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+}
+
+.aereo-brand-name {
+  font-size: 15px;
+  font-weight: 750;
+  color: var(--aereo-ink-deep);
+  letter-spacing: -0.01em;
+}
+
+.aereo-brand-product {
+  font-size: 9px;
+  font-weight: 800;
+  color: var(--aereo-ink-muted);
+  letter-spacing: 0.1em;
+}
+
+.aereo-brand-tagline {
+  font-size: 11px;
+  color: var(--aereo-forest);
+  font-family: var(--aereo-serif);
+  font-style: italic;
+  font-weight: 450;
+}
+
+.aereo-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.aereo-status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border: 1px solid var(--aereo-rule);
+  border-radius: 16px;
+  background-color: var(--aereo-card);
+  font-size: 10px;
+  font-weight: 650;
+  color: var(--aereo-ink-soft);
+  letter-spacing: 0.03em;
+}
+
+.aereo-back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid #192921;
+  border-radius: 4px;
+  background-color: #192921;
+  color: #faf9f3 !important;
+  font-size: 11px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 150ms ease, transform 150ms ease;
+}
+
+.aereo-back-button:hover {
+  background-color: var(--aereo-forest);
+  border-color: var(--aereo-forest);
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   SWAGGER UI CONTAINER & BASE OVERRIDES
+   ========================================================================== */
+
+/* Hide default swagger topbar since we have our custom branded navigation */
+.swagger-ui .topbar {
+  display: none !important;
+}
+
+.swagger-ui {
+  color: var(--aereo-ink) !important;
+  font-family: var(--aereo-sans) !important;
+  padding-bottom: 80px;
+}
+
+.swagger-ui .wrapper {
+  max-width: 1240px !important;
+  padding: 0 clamp(16px, 4vw, 40px) !important;
+}
+
+/* Information / Title Header */
+.swagger-ui .information-container {
+  padding: 32px 0 24px !important;
+  border-bottom: 1px solid var(--aereo-rule) !important;
+  margin-bottom: 32px !important;
+}
+
+.swagger-ui .info {
+  margin: 0 !important;
+}
+
+.swagger-ui .info .title {
+  font-family: var(--aereo-serif) !important;
+  font-size: clamp(32px, 3.8vw, 44px) !important;
+  font-weight: 420 !important;
+  color: var(--aereo-ink-deep) !important;
+  line-height: 1.1 !important;
+  margin-bottom: 10px !important;
+}
+
+.swagger-ui .info .title small {
+  display: inline-block !important;
+  margin-left: 10px !important;
+  top: -6px !important;
+  padding: 2px 8px !important;
+  border-radius: 4px !important;
+  border: 1px solid var(--aereo-forest-light) !important;
+  background-color: var(--aereo-forest-tint) !important;
+  color: var(--aereo-forest) !important;
+  font-family: var(--aereo-sans) !important;
+  font-size: 10px !important;
+  font-weight: 750 !important;
+  vertical-align: middle !important;
+}
+
+.swagger-ui .info .description {
+  font-family: var(--aereo-sans) !important;
+  font-size: 14px !important;
+  line-height: 1.65 !important;
+  color: var(--aereo-ink-soft) !important;
+  margin-bottom: 14px !important;
+}
+
+.swagger-ui .info .description p {
+  margin: 4px 0 !important;
+}
+
+.swagger-ui .info a {
+  color: var(--aereo-forest) !important;
+  font-weight: 600 !important;
+  text-decoration: underline !important;
+  text-underline-offset: 2px !important;
+}
+
+.swagger-ui .info a:hover {
+  color: var(--aereo-forest-light) !important;
+}
+
+.swagger-ui .info__contact,
+.swagger-ui .info__license {
+  font-size: 11px !important;
+  color: var(--aereo-ink-muted) !important;
+}
+
+/* ==========================================================================
+   TAG SECTIONS / ENDPOINT GROUPS
+   ========================================================================== */
+
+.swagger-ui .opblock-tag-section {
+  margin-bottom: 24px !important;
+}
+
+.swagger-ui .opblock-tag {
+  font-family: var(--aereo-serif) !important;
+  font-size: 22px !important;
+  font-weight: 500 !important;
+  color: var(--aereo-ink-deep) !important;
+  padding: 12px 0 !important;
+  border-bottom: 1px solid var(--aereo-rule-light) !important;
+  margin-bottom: 14px !important;
+}
+
+.swagger-ui .opblock-tag:hover {
+  color: var(--aereo-forest) !important;
+}
+
+.swagger-ui .opblock-tag small {
+  font-family: var(--aereo-sans) !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  color: var(--aereo-ink-soft) !important;
+  margin-left: 12px !important;
+}
+
+.swagger-ui .opblock-tag svg {
+  fill: var(--aereo-forest) !important;
+}
+
+/* ==========================================================================
+   OPERATION BLOCKS (API ENDPOINTS)
+   ========================================================================== */
+
+.swagger-ui .opblock {
+  border-radius: 6px !important;
+  border: 1px solid var(--aereo-rule) !important;
+  background-color: var(--aereo-card) !important;
+  box-shadow: var(--aereo-shadow) !important;
+  margin-bottom: 14px !important;
+  overflow: hidden !important;
+  transition: border-color 160ms ease, box-shadow 160ms ease !important;
+}
+
+.swagger-ui .opblock:hover {
+  border-color: #c2cbc0 !important;
+  box-shadow: var(--aereo-shadow-hover) !important;
+}
+
+.swagger-ui .opblock.is-open {
+  border-color: var(--aereo-forest-light) !important;
+}
+
+.swagger-ui .opblock .opblock-summary {
+  padding: 10px 16px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Method Badges */
+.swagger-ui .opblock .opblock-summary-method {
+  min-width: 68px !important;
+  padding: 5px 10px !important;
+  border-radius: 4px !important;
+  font-family: var(--aereo-mono) !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.05em !important;
+  text-align: center !important;
+  text-shadow: none !important;
+}
+
+/* GET Operations: Forest Green theme */
+.swagger-ui .opblock.opblock-get {
+  background-color: var(--aereo-card) !important;
+  border-color: rgba(40, 95, 77, 0.22) !important;
+}
+.swagger-ui .opblock.opblock-get .opblock-summary-method {
+  background-color: var(--aereo-forest-tint) !important;
+  color: var(--aereo-forest) !important;
+  border: 1px solid rgba(40, 95, 77, 0.25) !important;
+}
+
+/* POST Operations: Amber / Terracotta theme */
+.swagger-ui .opblock.opblock-post {
+  background-color: var(--aereo-card) !important;
+  border-color: rgba(189, 120, 75, 0.25) !important;
+}
+.swagger-ui .opblock.opblock-post .opblock-summary-method {
+  background-color: var(--aereo-amber-tint) !important;
+  color: var(--aereo-amber) !important;
+  border: 1px solid rgba(189, 120, 75, 0.25) !important;
+}
+
+/* Path & Description */
+.swagger-ui .opblock .opblock-summary-path {
+  font-family: var(--aereo-mono) !important;
+  font-size: 13px !important;
+  font-weight: 650 !important;
+  color: var(--aereo-ink-deep) !important;
+  padding-left: 14px !important;
+}
+
+.swagger-ui .opblock .opblock-summary-description {
+  font-family: var(--aereo-sans) !important;
+  font-size: 12px !important;
+  color: var(--aereo-ink-soft) !important;
+  margin-left: auto !important;
+}
+
+.swagger-ui .opblock-summary svg {
+  fill: var(--aereo-ink-muted) !important;
+}
+
+/* ==========================================================================
+   OPERATION BODY, PARAMETERS, & REQUESTS
+   ========================================================================== */
+
+.swagger-ui .opblock-body {
+  background-color: var(--aereo-paper-light) !important;
+  border-top: 1px solid var(--aereo-rule-light) !important;
+  padding: 20px 24px !important;
+}
+
+.swagger-ui .opblock-section-header {
+  background-color: var(--aereo-paper) !important;
+  border: 1px solid var(--aereo-rule-light) !important;
+  border-radius: 4px !important;
+  padding: 8px 14px !important;
+  margin-bottom: 12px !important;
+}
+
+.swagger-ui .opblock-section-header h4 {
+  font-family: var(--aereo-serif) !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  color: var(--aereo-ink-deep) !important;
+}
+
+.swagger-ui table.parameters {
+  border-collapse: collapse !important;
+  width: 100% !important;
+}
+
+.swagger-ui table.parameters th {
+  font-size: 10px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  color: var(--aereo-ink-muted) !important;
+  border-bottom: 1px solid var(--aereo-rule) !important;
+  padding: 8px 12px !important;
+}
+
+.swagger-ui table.parameters td {
+  padding: 12px !important;
+  border-bottom: 1px solid var(--aereo-rule-light) !important;
+  vertical-align: top !important;
+}
+
+.swagger-ui .parameter__name {
+  font-family: var(--aereo-mono) !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  color: var(--aereo-ink-deep) !important;
+}
+
+.swagger-ui .parameter__name.required {
+  color: var(--aereo-crimson) !important;
+}
+
+.swagger-ui .parameter__type {
+  font-family: var(--aereo-mono) !important;
+  font-size: 10px !important;
+  color: var(--aereo-ink-muted) !important;
+}
+
+.swagger-ui .parameter__deprecated {
+  font-size: 10px !important;
+  color: var(--aereo-crimson) !important;
+}
+
+/* Inputs & Form Controls */
+.swagger-ui input[type="text"],
+.swagger-ui input[type="search"],
+.swagger-ui select,
+.swagger-ui textarea {
+  font-family: var(--aereo-sans) !important;
+  font-size: 12px !important;
+  border: 1px solid var(--aereo-rule) !important;
+  border-radius: 4px !important;
+  background-color: var(--aereo-card) !important;
+  color: var(--aereo-ink) !important;
+  padding: 7px 12px !important;
+  outline: none !important;
+}
+
+.swagger-ui input[type="text"]:focus,
+.swagger-ui select:focus,
+.swagger-ui textarea:focus {
+  border-color: var(--aereo-forest) !important;
+  box-shadow: 0 0 0 2px rgba(40, 95, 77, 0.15) !important;
+}
+
+/* File Upload Button */
+.swagger-ui input[type="file"] {
+  font-size: 12px !important;
+  color: var(--aereo-ink-soft) !important;
+}
+
+/* Try it out & Execute buttons */
+.swagger-ui .btn {
+  font-family: var(--aereo-sans) !important;
+  font-size: 11px !important;
+  font-weight: 650 !important;
+  border-radius: 4px !important;
+  border: 1px solid var(--aereo-rule) !important;
+  background-color: var(--aereo-card) !important;
+  color: var(--aereo-ink) !important;
+  box-shadow: none !important;
+  padding: 6px 14px !important;
+  transition: all 140ms ease !important;
+}
+
+.swagger-ui .btn.try-out__btn {
+  border-color: var(--aereo-rule) !important;
+  background-color: var(--aereo-card) !important;
+  color: var(--aereo-forest) !important;
+}
+
+.swagger-ui .btn.try-out__btn:hover {
+  background-color: var(--aereo-forest-tint) !important;
+  border-color: var(--aereo-forest-light) !important;
+}
+
+.swagger-ui .btn.execute {
+  background-color: #192921 !important;
+  border-color: #192921 !important;
+  color: #faf9f3 !important;
+  min-height: 34px !important;
+}
+
+.swagger-ui .btn.execute:hover {
+  background-color: var(--aereo-forest) !important;
+  border-color: var(--aereo-forest) !important;
+}
+
+.swagger-ui .btn.cancel {
+  border-color: #f4d3cf !important;
+  background-color: var(--aereo-crimson-tint) !important;
+  color: var(--aereo-crimson) !important;
+}
+
+/* ==========================================================================
+   RESPONSES & CODE HIGHLIGHTS
+   ========================================================================== */
+
+.swagger-ui .responses-table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+}
+
+.swagger-ui .response-col_status {
+  font-family: var(--aereo-mono) !important;
+  font-size: 12px !important;
+  font-weight: 750 !important;
+}
+
+.swagger-ui .response__response {
+  font-family: var(--aereo-sans) !important;
+  font-size: 12px !important;
+  color: var(--aereo-ink-soft) !important;
+}
+
+/* Status 200/201 Success */
+.swagger-ui .response-col_status[data-code^="2"] {
+  color: var(--aereo-forest) !important;
+}
+
+/* Status 400/404/422 Errors */
+.swagger-ui .response-col_status[data-code^="4"],
+.swagger-ui .response-col_status[data-code^="5"] {
+  color: var(--aereo-crimson) !important;
+}
+
+/* Code blocks / Curl / Pre */
+.swagger-ui .highlight-code,
+.swagger-ui .microlight,
+.swagger-ui pre {
+  background-color: #192921 !important;
+  color: #faf9f3 !important;
+  border-radius: 4px !important;
+  border: 1px solid #2d3b32 !important;
+  font-family: var(--aereo-mono) !important;
+  font-size: 11px !important;
+  line-height: 1.55 !important;
+  padding: 12px 14px !important;
+}
+
+.swagger-ui .microlight code {
+  color: #faf9f3 !important;
+  font-family: var(--aereo-mono) !important;
+}
+
+.swagger-ui .copy-to-clipboard {
+  border-radius: 4px !important;
+  background-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+/* ==========================================================================
+   MODELS / SCHEMAS SECTION
+   ========================================================================== */
+
+.swagger-ui section.models {
+  border: 1px solid var(--aereo-rule) !important;
+  border-radius: 6px !important;
+  background-color: var(--aereo-card) !important;
+  box-shadow: var(--aereo-shadow) !important;
+  margin-top: 32px !important;
+  overflow: hidden !important;
+}
+
+.swagger-ui section.models h4 {
+  font-family: var(--aereo-serif) !important;
+  font-size: 20px !important;
+  font-weight: 500 !important;
+  color: var(--aereo-ink-deep) !important;
+  padding: 16px 20px !important;
+  border-bottom: 1px solid var(--aereo-rule-light) !important;
+}
+
+.swagger-ui section.models .model-container {
+  background-color: var(--aereo-paper-light) !important;
+  border: 1px solid var(--aereo-rule-light) !important;
+  border-radius: 4px !important;
+  margin: 12px 16px !important;
+  padding: 12px 16px !important;
+}
+
+.swagger-ui section.models .model-title {
+  font-family: var(--aereo-mono) !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: var(--aereo-forest) !important;
+}
+
+.swagger-ui .model-box {
+  background-color: transparent !important;
+}
+
+.swagger-ui .property {
+  font-family: var(--aereo-mono) !important;
+  font-size: 11px !important;
+  color: var(--aereo-ink-deep) !important;
+}
+
+.swagger-ui .prop-type {
+  color: var(--aereo-forest-light) !important;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (NARROW / MOBILE SCREENS)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .aereo-docs-nav {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 14px 0;
+    gap: 12px;
+  }
+
+  .aereo-nav-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .aereo-back-button {
+    font-size: 10px;
+    padding: 0 10px;
+  }
+
+  .swagger-ui .opblock .opblock-summary {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .swagger-ui .opblock .opblock-summary-path {
+    padding-left: 0 !important;
+  }
+
+  .swagger-ui .opblock .opblock-summary-description {
+    width: 100%;
+    margin-left: 0 !important;
+  }
+}

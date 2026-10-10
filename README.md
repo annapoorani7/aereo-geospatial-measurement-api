@@ -101,7 +101,7 @@ The backend CORS policy allows development requests from `http://localhost:5173`
 | `GET` | `/api/files/{file_id}/` | Metadata and extracted features for an uploaded file |
 | `GET` | `/api/files/{file_id}/measurements/` | CRS-aware planar polygon area and line length measurements |
 
-Interactive OpenAPI documentation is available at `http://127.0.0.1:8000/docs` while the server is running.
+Interactive OpenAPI documentation is available at `http://127.0.0.1:8000/docs` while the server is running. The documentation is custom-branded with Aereo GeoMeasure's editorial design system (warm ivory palette, forest-green accents, Newsreader display serif typography, and an integrated top header). To configure the "Back to application" navigation link, set the optional `AEREO_APP_URL` environment variable (defaults to `http://127.0.0.1:5173` for local development; in production deployments, set this to your hosted frontend origin, e.g. `https://your-domain.com`).
 
 ## Measurement methodology and CRS
 
