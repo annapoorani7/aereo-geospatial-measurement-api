@@ -145,3 +145,14 @@ Expected output: Clean TypeScript compilation (`tsc -b`) and Vite production bun
 3. **Format constraints:** Accepted formats are strictly `.kml` and `.zip` archives containing a single Shapefile (`.shp`, `.shx`, `.dbf`, and optional `.prj`).
 4. **Planar UTM scope:** Designed for local and regional spatial features. Global or polar datasets require geodesic measurement engines.
 5. **Tailwind CSS 3 toolchain:** Dependency audit reports dev-dependency advisories in the Tailwind CSS 3 build chain. Tailwind CSS 4 requires Node 20+, so Tailwind 3 is retained for Node 18 compatibility.
+
+## Limits
+
+| Limit | Value |
+|---|---|
+| Upload size | 20 MiB |
+| ZIP members | 256 |
+| Extracted archive size | 100 MiB |
+| Features per upload | 10,000 |
+| Vertices per feature | 10,000 |
+Feature and vertex limits are enforced after parsing all features.
