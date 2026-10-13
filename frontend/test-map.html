@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map Zoom Test</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        #map {
+            width: 100%;
+            height: 600px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+        }
+        .controls {
+            margin-bottom: 20px;
+            padding: 10px;
+            background: #f0f0f0;
+            border-radius: 4px;
+        }
+        .test-result {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <h1>Leaflet Map Zoom & Pan Test</h1>
+    
+    <div class="controls">
+        <p>Instructions:</p>
+        <ul>
+            <li>Try scrolling your mouse wheel over the map to zoom in/out</li>
+            <li>Try clicking and dragging the map to pan</li>
+            <li>Try double-clicking to zoom in</li>
+            <li>Check the console for any errors</li>
+        </ul>
+    </div>
+
+    <div id="map"></div>
+
+    <div id="result" class="test-result"></div>
+
+    <script>
+        // Initialize map
+        const map = L.map('map', {
+            center: [40.7128, -74.0060],
+            zoom: 4,
+            scrollWheelZoom: true,
+            dragging: true,
+            touchZoom: true,
+            doubleClickZoom: true,
+            boxZoom: true,
+            keyboard: true
+        });
+
+        // Add tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            maxZoom: 19
+        }).addTo(map);
+
+        // Add sample GeoJSON features
+        const sampleFeatures = {
+            type: "FeatureCollection",
+            features: [
+                {
+                    type: "Feature",
+                    id: "point_1",
+                    geometry: {
+                        type: "Point",
+                        coordinates: [-74.0060, 40.7128]
+                    },
+                    properties: { name: "City Center" }
+                },
+                {
+                    type: "Feature",
+                    id: "line_1",
+                    geometry: {
+                        type: "LineString",
+                        coordinates: [
+                            [-74.0060, 40.7128],
+                            [-74.0050, 40.7150],
+                            [-74.0040, 40.7170]
+                        ]
+                    },
+                    properties: { name: "Main Street Route" }
+                },
+                {
+                    type: "Feature",
+                    id: "polygon_1",
+                    geometry: {
+                        type: "Polygon",
+                        coordinates: [[
+                            [-74.0100, 40.7100],
+                            [-74.0000, 40.7100],
+                            [-74.0000, 40.7200],
+                            [-74.0100, 40.7200],
+                            [-74.0100, 40.7100]
+                        ]]
+                    },
+                    properties: { name: "Downtown District" }
+                }
+            ]
+        };
+
+        // Add GeoJSON to map
+        L.geoJSON(sampleFeatures, {
+            style: {
+                color: '#2d5016',
+                weight: 2,
+                opacity: 0.7,
+                fillOpacity: 0.4
+            },
+            onEachFeature: (feature, layer) => {
+                layer.bindPopup(`<strong>${feature.properties.name}</strong>`);
+            }
+        }).addTo(map);
+
+        // Test interactions
+        let zoomWorking = false;
+        let dragWorking = false;
+
+        // Test zoom
+        const initialZoom = map.getZoom();
+        map.setZoom(initialZoom + 1);
+        setTimeout(() => {
+            const newZoom = map.getZoom();
+            zoomWorking = newZoom > initialZoom;
+            
+            // Test drag
+            const initialCenter = map.getCenter();
+            map.panBy([100, 100]);
+            setTimeout(() => {
+                const newCenter = map.getCenter();
+                dragWorking = initialCenter.lat !== newCenter.lat || initialCenter.lng !== newCenter.lng;
+                
+                // Display results
+                const resultDiv = document.getElementById('result');
+                const allWorking = zoomWorking && dragWorking;
+                resultDiv.className = allWorking ? 'success' : 'error';
+                resultDiv.innerHTML = `
+                    <p>Zoom Working: ${zoomWorking ? '✓ YES' : '✗ NO'}</p>
+                    <p>Pan/Drag Working: ${dragWorking ? '✓ YES' : '✗ NO'}</p>
+                    <p>Overall: ${allWorking ? '✓ ALL FEATURES WORKING' : '✗ SOME FEATURES NOT WORKING'}</p>
+                `;
+                
+                console.log('Map Test Results:', { zoomWorking, dragWorking });
+            }, 500);
+        }, 500);
+
+        // Log map state
+        console.log('Map initialized with:', {
+            scrollWheelZoom: map.scrollWheelZoom.enabled(),
+            dragging: map.dragging.enabled(),
+            touchZoom: map.touchZoom.enabled(),
+            doubleClickZoom: map.doubleClickZoom.enabled(),
+            boxZoom: map.boxZoom.enabled(),
+            keyboard: map.keyboard.enabled()
+        });
+    </script>
+</body>
+</html>

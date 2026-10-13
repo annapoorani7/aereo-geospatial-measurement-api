@@ -14,6 +14,7 @@ import {
 import type { FeatureMeasurement, SessionUpload } from "../types";
 import { StatusBadge } from "../components/StatusBadge";
 import { GeometryPreview } from "../components/GeometryPreview";
+import { MapViewer } from "../components/MapViewer";
 
 const numberFormat = new Intl.NumberFormat(undefined, { maximumFractionDigits: 2 });
 
@@ -60,6 +61,8 @@ export default function FeatureExplorerPage({
   const [geometryFilter, setGeometryFilter] = useState("all");
   const [statusFilter, setStatusFilter] = useState("all");
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [selectedFeatureId, setSelectedFeatureId] = useState<string | null>(null);
+  const [showMap, setShowMap] = useState(true);
   const [copyFeedback, setCopyFeedback] = useState("");
 
   const measurementById = useMemo(
@@ -265,6 +268,32 @@ export default function FeatureExplorerPage({
             )}
           </div>
 
+          {/* Interactive Map Panel */}
+          {activeUpload && showMap && (
+            <article className="editorial-panel map-panel">
+              <div className="panel-editorial-heading">
+                <div>
+                  <span className="editorial-kicker-small">SPATIAL VISUALIZATION</span>
+                  <h2 className="panel-title">Interactive Feature Map</h2>
+                </div>
+                <button
+                  className="button button-quiet"
+                  onClick={() => setShowMap(false)}
+                  title="Hide map"
+                >
+                  Close map
+                </button>
+              </div>
+              <MapViewer
+                features={activeUpload.upload.features}
+                measurements={activeUpload.measurements}
+                selectedFeatureId={selectedFeatureId}
+                onFeatureSelect={setSelectedFeatureId}
+                height="500px"
+              />
+            </article>
+          )}
+
           {/* Features Table Panel */}
           <article className="editorial-panel feature-table-panel">
             <div className="panel-editorial-heading">
@@ -274,6 +303,15 @@ export default function FeatureExplorerPage({
                   Showing {visibleFeatures.length} of {features.length} features
                 </h2>
               </div>
+              {!showMap && (
+                <button
+                  className="button button-quiet"
+                  onClick={() => setShowMap(true)}
+                  title="Show interactive map"
+                >
+                  Show map
+                </button>
+              )}
             </div>
 
             {visibleFeatures.length > 0 ? (

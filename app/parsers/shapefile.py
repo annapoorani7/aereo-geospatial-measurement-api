@@ -1,7 +1,12 @@
 from pathlib import Path
 from typing import Any
 
-import fiona
+try:
+    import fiona
+    FIONA_AVAILABLE = True
+except ImportError:
+    FIONA_AVAILABLE = False
+
 from pyproj import CRS
 from pyproj.exceptions import CRSError
 
@@ -29,6 +34,9 @@ def _source_crs(collection: Any, has_projection_file: bool) -> tuple[str | None,
 def parse_shapefile(
     shapefile_path: Path,
 ) -> tuple[list[FeatureResponse], str | None, str]:
+    if not FIONA_AVAILABLE:
+        raise UploadError("Shapefile support requires Fiona.")
+
     features: list[FeatureResponse] = []
     try:
         with fiona.open(shapefile_path) as collection:
