@@ -592,6 +592,4 @@ Add to `.vscode/launch.json`:
 - [PyProj Documentation](https://pyproj4.github.io/pyproj/)
 - [Tailwind CSS Documentation](https://tailwindcss.com/)
 
----
 
-**Happy coding!** 🚀
