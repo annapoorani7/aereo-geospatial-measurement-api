@@ -487,7 +487,7 @@ The Aereo GeoMeasure application has a strong foundation with excellent design a
 ## Document References
 
 - **Full Roadmap:** See `UI_UX_IMPROVEMENT_ROADMAP.md` for detailed specifications
-- **Design System:** Current Butter-inspired design system in `frontend/src/styles.css`
+- **Design System:** Current Butter-inspired design system in `client/src/styles.css`
 - **Component Library:** Lucide React icons, Tailwind CSS utilities
 - **Accessibility Guidelines:** WCAG 2.1 Level AAA compliance target
 

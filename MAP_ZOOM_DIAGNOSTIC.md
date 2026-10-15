@@ -54,7 +54,7 @@ Added console logging in the MapController component that will output:
 
 ## Files Modified
 
-- `frontend/src/components/MapViewer.tsx` - Added console logging and useRef to track initialization
+- `client/src/components/MapViewer.tsx` - Added console logging and useRef to track initialization
 
 ## Testing Instructions
 

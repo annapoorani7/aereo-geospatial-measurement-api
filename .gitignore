@@ -29,8 +29,6 @@ uploads/
 
 # Frontend
 node_modules/
-frontend/dist/
-frontend/*.tsbuildinfo
-frontend/qa-sample.*
-*.kml
-*.zip
+client/dist/
+client/*.tsbuildinfo
+client/qa-sample.*

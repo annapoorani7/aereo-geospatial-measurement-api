@@ -146,7 +146,7 @@ To verify WCAG AAA compliance:
 
 ## Files Modified
 
-- `frontend/src/styles.css` - Primary color palette and component styles
+- `client/src/styles.css` - Primary color palette and component styles
 
 ## Compliance Status
 

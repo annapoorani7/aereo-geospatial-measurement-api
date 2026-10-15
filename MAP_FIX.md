@@ -91,7 +91,7 @@ TypeScript errors about react-leaflet props are suppressed with `@ts-ignore` com
 
 ## Files Modified
 
-- [`frontend/src/components/MapViewer.tsx`](frontend/src/components/MapViewer.tsx)
+- [`client/src/components/MapViewer.tsx`](client/src/components/MapViewer.tsx)
   - Refactored to use `useMap()` hook
   - Created MapController helper component
   - Fixed bounds fitting logic

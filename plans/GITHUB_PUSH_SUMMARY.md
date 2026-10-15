@@ -25,7 +25,7 @@ This push contains the complete implementation of the Aereo Geomeasure UI/UX Imp
 
 ### New Component Files (5)
 ```
-frontend/src/components/
+client/src/components/
 ├── LoadingStates.tsx              (200+ lines)
 ├── FormValidation.tsx             (250+ lines)
 ├── KeyboardNavigation.tsx          (350+ lines)
@@ -35,7 +35,7 @@ frontend/src/components/
 
 ### Modified Files (3)
 ```
-frontend/src/
+client/src/
 ├── styles.css                      (WCAG AAA color updates)
 ├── pages/FeatureExplorerPage.tsx   (Map toggle fix)
 ├── pages/UploadPage.tsx            (Error message integration)
@@ -288,21 +288,21 @@ See [PROJECT_INDEX.md](plans/PROJECT_INDEX.md) for details.
 - [COMPLETE_IMPLEMENTATION_GUIDE.md](plans/COMPLETE_IMPLEMENTATION_GUIDE.md) - Technical guide
 
 ### Components
-- [LoadingStates.tsx](frontend/src/components/LoadingStates.tsx)
-- [FormValidation.tsx](frontend/src/components/FormValidation.tsx)
-- [KeyboardNavigation.tsx](frontend/src/components/KeyboardNavigation.tsx)
-- [AdvancedFeatures.tsx](frontend/src/components/AdvancedFeatures.tsx)
-- [MajorFeatures.tsx](frontend/src/components/MajorFeatures.tsx)
+- [LoadingStates.tsx](client/src/components/LoadingStates.tsx)
+- [FormValidation.tsx](client/src/components/FormValidation.tsx)
+- [KeyboardNavigation.tsx](client/src/components/KeyboardNavigation.tsx)
+- [AdvancedFeatures.tsx](client/src/components/AdvancedFeatures.tsx)
+- [MajorFeatures.tsx](client/src/components/MajorFeatures.tsx)
 
 ### Styles
-- [styles.css](frontend/src/styles.css) - WCAG AAA compliant
+- [styles.css](client/src/styles.css) - WCAG AAA compliant
 
 ---
 
 ## 📝 NOTES
 
 ### For Reviewers
-1. Check component implementations in `frontend/src/components/`
+1. Check component implementations in `client/src/components/`
 2. Review accessibility compliance in `WCAG_AAA_CONTRAST_IMPROVEMENTS.md`
 3. Verify TypeScript types and JSDoc comments
 4. Test keyboard navigation and screen reader support

@@ -2,7 +2,7 @@
 
 ## Summary of Changes
 
-The map zoom and pan functionality has been fixed in [`frontend/src/components/MapViewer.tsx`](frontend/src/components/MapViewer.tsx).
+The map zoom and pan functionality has been fixed in [`client/src/components/MapViewer.tsx`](client/src/components/MapViewer.tsx).
 
 ### What Was Fixed
 
@@ -177,7 +177,7 @@ The `MapController` component:
 - react: ^18.3.1
 
 ### Files Modified
-- `frontend/src/components/MapViewer.tsx` - Main fix implementation
+- `client/src/components/MapViewer.tsx` - Main fix implementation
 
 ---
 

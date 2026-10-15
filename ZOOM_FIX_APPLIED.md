@@ -68,7 +68,7 @@ Added the following interaction props to the `MapContainer` component (lines 165
 
 ## Files Modified
 
-- [`frontend/src/components/MapViewer.tsx`](frontend/src/components/MapViewer.tsx) - Added interaction props to MapContainer (lines 165-171)
+- [`client/src/components/MapViewer.tsx`](client/src/components/MapViewer.tsx) - Added interaction props to MapContainer (lines 165-171)
 
 ## Verification
 

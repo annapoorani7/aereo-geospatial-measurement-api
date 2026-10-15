@@ -78,7 +78,7 @@ aereo-geospatial-measurement-api/
 │   └── static/
 │       ├── docs.css              # API docs styling
 │       └── favicon.svg           # Branding
-├── frontend/                     # React frontend
+├── client/                     # React frontend
 │   ├── src/
 │   │   ├── main.tsx              # Entry point
 │   │   ├── App.tsx               # Root component
@@ -238,7 +238,7 @@ npm run build
 
 ### Key Files
 
-#### [`frontend/src/api.ts`](frontend/src/api.ts)
+#### [`client/src/api.ts`](client/src/api.ts)
 API client with error handling:
 ```typescript
 import { uploadFile, getMeasurements, getFileMetadata } from "./api";
@@ -247,7 +247,7 @@ const response = await uploadFile(file);
 const measurements = await getMeasurements(uploadId);
 ```
 
-#### [`frontend/src/types.ts`](frontend/src/types.ts)
+#### [`client/src/types.ts`](client/src/types.ts)
 TypeScript type definitions:
 ```typescript
 interface UploadResponse {
@@ -258,7 +258,7 @@ interface UploadResponse {
 }
 ```
 
-#### [`frontend/src/App.tsx`](frontend/src/App.tsx)
+#### [`client/src/App.tsx`](client/src/App.tsx)
 Root component with routing and state management:
 - Hash-based routing
 - Upload session management
@@ -267,7 +267,7 @@ Root component with routing and state management:
 
 ### Adding a New Component
 
-1. Create file in `frontend/src/components/`
+1. Create file in `client/src/components/`
 2. Use TypeScript with proper types
 3. Add JSDoc comments
 4. Use Tailwind CSS for styling
@@ -275,7 +275,7 @@ Root component with routing and state management:
 
 Example:
 ```typescript
-// frontend/src/components/MyComponent.tsx
+// client/src/components/MyComponent.tsx
 import { FC } from "react";
 
 interface MyComponentProps {
@@ -304,7 +304,7 @@ export default MyComponent;
 
 ### Adding a New Page
 
-1. Create file in `frontend/src/pages/`
+1. Create file in `client/src/pages/`
 2. Add route to `App.tsx` hash routing
 3. Add navigation link to `TopNav.tsx`
 4. Use lazy loading with `React.lazy()`
@@ -344,19 +344,19 @@ def my_operation_endpoint(file_id: str) -> StreamingResponse:
 
 **Frontend:**
 
-1. Add API call to `frontend/src/api.ts`
-2. Create component in `frontend/src/components/`
+1. Add API call to `client/src/api.ts`
+2. Create component in `client/src/components/`
 3. Integrate into page
 
 ```typescript
-// frontend/src/api.ts
+// client/src/api.ts
 export async function myOperation(fileId: string): Promise<MyResult> {
   return requestJson<MyResult>(`/api/files/${encodeURIComponent(fileId)}/my-operation/`);
 }
 ```
 
 ```typescript
-// frontend/src/components/MyOperationComponent.tsx
+// client/src/components/MyOperationComponent.tsx
 const result = await myOperation(uploadId);
 ```
 
@@ -534,7 +534,7 @@ Add to `.vscode/launch.json`:
       "request": "launch",
       "name": "Launch Chrome",
       "url": "http://localhost:5173",
-      "webRoot": "${workspaceFolder}/frontend/src"
+      "webRoot": "${workspaceFolder}/client/src"
     }
   ]
 }
@@ -568,7 +568,7 @@ Add to `.vscode/launch.json`:
 2. Create a feature branch: `git checkout -b feature/my-feature`
 3. Make changes with tests
 4. Ensure all tests pass: `pytest`
-5. Format code: `black app/` and `prettier frontend/src/`
+5. Format code: `black app/` and `prettier client/src/`
 6. Commit with clear message: `git commit -m "Add my feature"`
 7. Push and create Pull Request
 

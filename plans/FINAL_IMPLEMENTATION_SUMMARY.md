@@ -29,7 +29,7 @@
 
 ### Component Files (Production-Ready)
 
-#### 1. [`frontend/src/components/LoadingStates.tsx`](frontend/src/components/LoadingStates.tsx)
+#### 1. [`client/src/components/LoadingStates.tsx`](client/src/components/LoadingStates.tsx)
 **Phase 1 - Loading State Indicators**
 - `SkeletonLine` - Animated skeleton placeholder
 - `SkeletonCard` - Multi-item skeleton layout
@@ -38,7 +38,7 @@
 - `UploadProgressIndicator` - Multi-stage upload progress
 - `MeasurementCalculationIndicator` - Feature processing progress
 
-#### 2. [`frontend/src/components/FormValidation.tsx`](frontend/src/components/FormValidation.tsx)
+#### 2. [`client/src/components/FormValidation.tsx`](client/src/components/FormValidation.tsx)
 **Phase 1 - Form Validation Feedback**
 - `ValidationFeedback` - Real-time validation display
 - `ValidatedFormField` - Form input with validation
@@ -46,7 +46,7 @@
 - `SuccessConfirmation` - Success state with next steps
 - `FormValidationGroup` - Multi-field validation tracking
 
-#### 3. [`frontend/src/components/KeyboardNavigation.tsx`](frontend/src/components/KeyboardNavigation.tsx)
+#### 3. [`client/src/components/KeyboardNavigation.tsx`](client/src/components/KeyboardNavigation.tsx)
 **Phase 1 - Keyboard Navigation, Tooltips, Breadcrumbs, Progress**
 - `useKeyboardShortcuts` - Keyboard shortcuts hook
 - `KeyboardHelpDialog` - Help dialog (? key)
@@ -58,7 +58,7 @@
 - `ProgressIndicator` - Multi-step progress
 - `Stepper` - Step navigation
 
-#### 4. [`frontend/src/components/AdvancedFeatures.tsx`](frontend/src/components/AdvancedFeatures.tsx)
+#### 4. [`client/src/components/AdvancedFeatures.tsx`](client/src/components/AdvancedFeatures.tsx)
 **Phase 2 - Core Enhancements**
 - `AdvancedFilterPanel` - Advanced filtering system
 - `BatchOperationToolbar` - Batch operations
@@ -66,7 +66,7 @@
 - `DarkModeToggle` - Dark mode support
 - `CollaborationStatus` - Real-time collaboration
 
-#### 5. [`frontend/src/components/MajorFeatures.tsx`](frontend/src/components/MajorFeatures.tsx)
+#### 5. [`client/src/components/MajorFeatures.tsx`](client/src/components/MajorFeatures.tsx)
 **Phase 3-5 - Major Features & Polish**
 - `AISuggestionsPanel` - AI-powered suggestions
 - `AnalyticsDashboard` - Advanced analytics
@@ -283,11 +283,11 @@ Original roadmap with:
 
 1. **Copy component files**
 ```bash
-cp frontend/src/components/LoadingStates.tsx frontend/src/components/
-cp frontend/src/components/FormValidation.tsx frontend/src/components/
-cp frontend/src/components/KeyboardNavigation.tsx frontend/src/components/
-cp frontend/src/components/AdvancedFeatures.tsx frontend/src/components/
-cp frontend/src/components/MajorFeatures.tsx frontend/src/components/
+cp client/src/components/LoadingStates.tsx client/src/components/
+cp client/src/components/FormValidation.tsx client/src/components/
+cp client/src/components/KeyboardNavigation.tsx client/src/components/
+cp client/src/components/AdvancedFeatures.tsx client/src/components/
+cp client/src/components/MajorFeatures.tsx client/src/components/
 ```
 
 2. **Update imports in your pages**
@@ -499,8 +499,8 @@ import * from '@/components/MajorFeatures';
 ```
 
 ### Key Files
-- Components: `frontend/src/components/`
-- Styles: `frontend/src/styles.css`
+- Components: `client/src/components/`
+- Styles: `client/src/styles.css`
 - Documentation: `plans/`
 
 ### Next Steps

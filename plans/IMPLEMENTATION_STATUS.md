@@ -10,10 +10,10 @@ Comprehensive UI/UX improvements for Aereo Geomeasure API, focusing on accessibi
 ### ✅ 1. Contextual Error Messages (COMPLETED)
 **Status**: Production Ready
 **Files Modified**:
-- `frontend/src/utils/errorMessages.ts` - Error message generation utility
-- `frontend/src/components/ErrorBanner.tsx` - Error display components
-- `frontend/src/pages/UploadPage.tsx` - Integration with upload workflow
-- `frontend/src/styles.css` - Error banner and validation styles
+- `client/src/utils/errorMessages.ts` - Error message generation utility
+- `client/src/components/ErrorBanner.tsx` - Error display components
+- `client/src/pages/UploadPage.tsx` - Integration with upload workflow
+- `client/src/styles.css` - Error banner and validation styles
 
 **Features Implemented**:
 - Contextual error messages for API errors, validation errors, and CRS-specific errors
@@ -29,7 +29,7 @@ Comprehensive UI/UX improvements for Aereo Geomeasure API, focusing on accessibi
 ### ✅ 2. Interactive Feature Map Toggle Fix (COMPLETED)
 **Status**: Production Ready
 **Files Modified**:
-- `frontend/src/pages/FeatureExplorerPage.tsx` - Map toggle functionality
+- `client/src/pages/FeatureExplorerPage.tsx` - Map toggle functionality
 
 **Features Implemented**:
 - Added "Show map" button to Feature Table Panel header
@@ -44,7 +44,7 @@ Comprehensive UI/UX improvements for Aereo Geomeasure API, focusing on accessibi
 ### ✅ 3. Color Contrast Improvements (WCAG AAA) (COMPLETED)
 **Status**: Production Ready
 **Files Modified**:
-- `frontend/src/styles.css` - Complete color palette overhaul
+- `client/src/styles.css` - Complete color palette overhaul
 
 **Features Implemented**:
 - Updated primary text colors for 7:1+ contrast ratio

@@ -11,7 +11,7 @@ Map zoom and pan interactions were not working in the Feature Explorer page. Use
 The MapViewer component was not properly enabling Leaflet's interaction handlers. In react-leaflet v4, these handlers must be explicitly enabled after the map instance is created.
 
 ## Solution
-Updated [`frontend/src/components/MapViewer.tsx`](frontend/src/components/MapViewer.tsx) with the following changes:
+Updated [`client/src/components/MapViewer.tsx`](client/src/components/MapViewer.tsx) with the following changes:
 
 ### 1. MapController Component (Lines 18-55)
 Added a helper component that uses the `useMap()` hook to access the Leaflet map instance and explicitly enable all interaction handlers:
@@ -86,7 +86,7 @@ The fix has been applied to the MapViewer component. To test:
    - Zoom control buttons work
 
 ## Files Modified
-- `frontend/src/components/MapViewer.tsx` - Main fix implementation
+- `client/src/components/MapViewer.tsx` - Main fix implementation
 
 ## Dependencies
 - react-leaflet: ^4.2.1

@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Aereo GeoMeasure Demo Dataset</name>
+    <description>Sample geospatial features for testing Aereo GeoMeasure</description>
+    
+    <!-- Folder for Points -->
+    <Folder>
+      <name>Points of Interest</name>
+      <description>Sample point features</description>
+      
+      <Placemark>
+        <name>City Center</name>
+        <description>Downtown area landmark</description>
+        <Point>
+          <coordinates>-74.0060,40.7128,0</coordinates>
+        </Point>
+      </Placemark>
+      
+      <Placemark>
+        <name>Park Entrance</name>
+        <description>Main entrance to central park</description>
+        <Point>
+          <coordinates>-73.9776,40.7829,0</coordinates>
+        </Point>
+      </Placemark>
+      
+      <Placemark>
+        <name>Museum Location</name>
+        <description>Natural history museum</description>
+        <Point>
+          <coordinates>-73.9740,40.7813,0</coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+    
+    <!-- Folder for LineStrings -->
+    <Folder>
+      <name>Routes and Paths</name>
+      <description>Sample line features</description>
+      
+      <Placemark>
+        <name>Main Street Route</name>
+        <description>Primary commercial route</description>
+        <LineString>
+          <coordinates>
+            -74.0060,40.7128,0
+            -74.0050,40.7150,0
+            -74.0040,40.7170,0
+            -74.0030,40.7190,0
+            -74.0020,40.7210,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      
+      <Placemark>
+        <name>Park Trail</name>
+        <description>Walking trail through park</description>
+        <LineString>
+          <coordinates>
+            -73.9776,40.7829,0
+            -73.9780,40.7850,0
+            -73.9790,40.7870,0
+            -73.9800,40.7880,0
+            -73.9810,40.7890,0
+            -73.9820,40.7895,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+      
+      <Placemark>
+        <name>River Path</name>
+        <description>Scenic riverside walk</description>
+        <LineString>
+          <coordinates>
+            -73.9500,40.7600,0
+            -73.9510,40.7620,0
+            -73.9520,40.7640,0
+            -73.9530,40.7660,0
+            -73.9540,40.7680,0
+            -73.9550,40.7700,0
+            -73.9560,40.7720,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+    </Folder>
+    
+    <!-- Folder for Polygons -->
+    <Folder>
+      <name>Areas and Zones</name>
+      <description>Sample polygon features</description>
+      
+      <Placemark>
+        <name>Downtown District</name>
+        <description>Central business district</description>
+        <Polygon>
+          <outerBoundaryIs>
+            <LinearRing>
+              <coordinates>
+                -74.0100,40.7100,0
+                -74.0000,40.7100,0
+                -74.0000,40.7200,0
+                -74.0100,40.7200,0
+                -74.0100,40.7100,0
+              </coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+        </Polygon>
+      </Placemark>
+      
+      <Placemark>
+        <name>Central Park</name>
+        <description>Large urban park</description>
+        <Polygon>
+          <outerBoundaryIs>
+            <LinearRing>
+              <coordinates>
+                -73.9820,40.7694,0
+                -73.9490,40.7694,0
+                -73.9490,40.8084,0
+                -73.9820,40.8084,0
+                -73.9820,40.7694,0
+              </coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+        </Polygon>
+      </Placemark>
+      
+      <Placemark>
+        <name>Residential Zone A</name>
+        <description>Residential neighborhood</description>
+        <Polygon>
+          <outerBoundaryIs>
+            <LinearRing>
+              <coordinates>
+                -73.9600,40.7400,0
+                -73.9500,40.7400,0
+                -73.9500,40.7500,0
+                -73.9600,40.7500,0
+                -73.9600,40.7400,0
+              </coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+        </Polygon>
+      </Placemark>
+      
+      <Placemark>
+        <name>Industrial Zone</name>
+        <description>Industrial area with warehouse district</description>
+        <Polygon>
+          <outerBoundaryIs>
+            <LinearRing>
+              <coordinates>
+                -74.0300,40.7000,0
+                -74.0100,40.7000,0
+                -74.0100,40.7100,0
+                -74.0300,40.7100,0
+                -74.0300,40.7000,0
+              </coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+        </Polygon>
+      </Placemark>
+      
+      <Placemark>
+        <name>Complex Polygon with Hole</name>
+        <description>Area with interior exclusion zone</description>
+        <Polygon>
+          <outerBoundaryIs>
+            <LinearRing>
+              <coordinates>
+                -73.9700,40.7600,0
+                -73.9400,40.7600,0
+                -73.9400,40.7900,0
+                -73.9700,40.7900,0
+                -73.9700,40.7600,0
+              </coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+          <innerBoundaryIs>
+            <LinearRing>
+              <coordinates>
+                -73.9600,40.7700,0
+                -73.9500,40.7700,0
+                -73.9500,40.7800,0
+                -73.9600,40.7800,0
+                -73.9600,40.7700,0
+              </coordinates>
+            </LinearRing>
+          </innerBoundaryIs>
+        </Polygon>
+      </Placemark>
+    </Folder>
+    
+    <!-- Folder for Mixed Features -->
+    <Folder>
+      <name>Mixed Features</name>
+      <description>Various feature types for comprehensive testing</description>
+      
+      <Placemark>
+        <name>Shopping District</name>
+        <description>Commercial shopping area with multiple stores</description>
+        <Polygon>
+          <outerBoundaryIs>
+            <LinearRing>
+              <coordinates>
+                -73.9850,40.7500,0
+                -73.9750,40.7500,0
+                -73.9750,40.7600,0
+                -73.9850,40.7600,0
+                -73.9850,40.7500,0
+              </coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+        </Polygon>
+      </Placemark>
+      
+      <Placemark>
+        <name>Transit Hub</name>
+        <description>Major transportation interchange</description>
+        <Point>
+          <coordinates>-73.9900,40.7550,0</coordinates>
+        </Point>
+      </Placemark>
+      
+      <Placemark>
+        <name>Subway Line A</name>
+        <description>Major subway route</description>
+        <LineString>
+          <coordinates>
+            -74.0200,40.7000,0
+            -74.0100,40.7100,0
+            -74.0000,40.7200,0
+            -73.9900,40.7300,0
+            -73.9800,40.7400,0
+            -73.9700,40.7500,0
+            -73.9600,40.7600,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+    </Folder>
+    
+    <!-- Standalone Features -->
+    <Placemark>
+      <name>Landmark Building</name>
+      <description>Historic landmark structure</description>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <coordinates>
+              -73.9850,40.7280,0
+              -73.9800,40.7280,0
+              -73.9800,40.7330,0
+              -73.9850,40.7330,0
+              -73.9850,40.7280,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+    
+    <Placemark>
+      <name>Water Feature</name>
+      <description>River or water body</description>
+      <LineString>
+        <coordinates>
+          -73.9300,40.7400,0
+          -73.9350,40.7450,0
+          -73.9400,40.7500,0
+          -73.9450,40.7550,0
+          -73.9500,40.7600,0
+        </coordinates>
+      </LineString>
+    </Placemark>
+    
+  </Document>
+</kml>
