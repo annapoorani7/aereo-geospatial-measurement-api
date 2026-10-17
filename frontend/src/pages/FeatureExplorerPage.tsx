@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   ChevronDown,
   ChevronRight,
@@ -14,6 +14,7 @@ import {
 import type { FeatureMeasurement, SessionUpload } from "../types";
 import { StatusBadge } from "../components/StatusBadge";
 import { GeometryPreview } from "../components/GeometryPreview";
+import { MapViewer } from "../components/MapViewer";
 
 const numberFormat = new Intl.NumberFormat(undefined, { maximumFractionDigits: 2 });
 
@@ -60,7 +61,12 @@ export default function FeatureExplorerPage({
   const [geometryFilter, setGeometryFilter] = useState("all");
   const [statusFilter, setStatusFilter] = useState("all");
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [showMap, setShowMap] = useState(true);
   const [copyFeedback, setCopyFeedback] = useState("");
+
+  useEffect(() => {
+    setExpandedId(null);
+  }, [activeUpload?.upload.upload_id]);
 
   const measurementById = useMemo(
     () => new Map(activeUpload?.measurements?.measurements.map((item) => [item.feature_id, item]) ?? []),
@@ -265,6 +271,33 @@ export default function FeatureExplorerPage({
             )}
           </div>
 
+          {/* Interactive Map Panel */}
+          {activeUpload && showMap && (
+            <article className="editorial-panel map-panel">
+              <div className="panel-editorial-heading">
+                <div>
+                  <span className="editorial-kicker-small">SPATIAL VISUALIZATION</span>
+                  <h2 className="panel-title">Interactive Feature Map</h2>
+                </div>
+                <button
+                  className="button button-quiet"
+                  onClick={() => setShowMap(false)}
+                  title="Hide map"
+                >
+                  Close map
+                </button>
+              </div>
+              <MapViewer
+                key={activeUpload.upload.upload_id}
+                features={activeUpload.upload.features}
+                measurements={activeUpload.measurements}
+                selectedFeatureId={expandedId}
+                onFeatureSelect={setExpandedId}
+                height="500px"
+              />
+            </article>
+          )}
+
           {/* Features Table Panel */}
           <article className="editorial-panel feature-table-panel">
             <div className="panel-editorial-heading">
@@ -274,6 +307,15 @@ export default function FeatureExplorerPage({
                   Showing {visibleFeatures.length} of {features.length} features
                 </h2>
               </div>
+              {!showMap && (
+                <button
+                  className="button button-quiet"
+                  onClick={() => setShowMap(true)}
+                  title="Show interactive map"
+                >
+                  Show map
+                </button>
+              )}
             </div>
 
             {visibleFeatures.length > 0 ? (

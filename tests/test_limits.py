@@ -1,6 +1,7 @@
 import pytest
 from fastapi.testclient import TestClient
 from app.main import app
+from app.schemas.files import FeatureResponse
 from app.services import processing
 
 client = TestClient(app)
@@ -56,3 +57,53 @@ def test_vertex_limit_zip(monkeypatch: pytest.MonkeyPatch, tmp_path):
     response = _post_file("areas.zip", archive_path)
     assert response.status_code == 413
     assert "vertex limit" in response.json()["detail"].lower()
+
+
+@pytest.mark.parametrize(
+    ("geometry_type", "coordinates", "expected_vertices"),
+    [
+        ("Point", [1, 2], 1),
+        ("LineString", [[0, 0], [1, 1], [2, 2]], 3),
+        ("Polygon", [[[0, 0], [2, 0], [2, 2], [0, 2], [0, 0]]], 5),
+        (
+            "Polygon",
+            [
+                [[0, 0], [4, 0], [4, 4], [0, 4], [0, 0]],
+                [[1, 1], [2, 1], [2, 2], [1, 2], [1, 1]],
+            ],
+            10,
+        ),
+    ],
+)
+def test_geometry_vertex_count_includes_supported_geometry_coordinates(
+    geometry_type: str,
+    coordinates: list,
+    expected_vertices: int,
+) -> None:
+    geometry = {"type": geometry_type, "coordinates": coordinates}
+
+    assert processing._count_geometry_vertices(geometry) == expected_vertices
+
+
+def test_polygon_interior_ring_vertices_enforce_limit(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    feature = FeatureResponse(
+        feature_id="polygon-with-hole",
+        geometry_type="Polygon",
+        geometry={
+            "type": "Polygon",
+            "coordinates": [
+                [[0, 0], [4, 0], [4, 4], [0, 4], [0, 0]],
+                [[1, 1], [2, 1], [2, 2], [1, 2], [1, 1]],
+            ],
+        },
+        source_crs="EPSG:4326",
+        properties={},
+    )
+    monkeypatch.setattr(processing, "MAX_VERTICES", 9)
+
+    with pytest.raises(processing.UploadError) as exc_info:
+        processing._validate_feature_limits([feature])
+
+    assert exc_info.value.status_code == 413
