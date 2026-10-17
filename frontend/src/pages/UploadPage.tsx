@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import { MeasurementSummary } from "../components/MeasurementSummary";
 import { StatusBadge } from "../components/StatusBadge";
-import { ApiError } from "../api";
+import { getContextualErrorMessage } from "../utils/errorMessages";
 import type { SessionUpload, UploadResponse } from "../types";
 
 const MAX_FILE_BYTES = 20 * 1024 * 1024;
@@ -83,11 +83,8 @@ export default function UploadPage({
       setSelectedFile(null);
       if (inputRef.current) inputRef.current.value = "";
     } catch (uploadError) {
-      setError(
-        uploadError instanceof ApiError
-          ? uploadError.message
-          : "The upload failed unexpectedly. Please ensure the backend is running and try again."
-      );
+      const errorMessage = getContextualErrorMessage(uploadError, { type: "upload" });
+      setError(errorMessage.message);
     } finally {
       setBusy(false);
     }
